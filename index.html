@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Spotify Clone</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Font Awesome Icon via CDN -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+            integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer" />
+
+        <!-- Tailwind via CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body class="bg-black flex flex-col h-screen min-h-0 overflow-hidden text-white pb-2">
+        <header class="w-full h-auto p-2 flex justify-center items-center">
+            <div
+                class="header-left max-[767px]:w-full w-1/2 flex justify-center items-center gap-2">
+                <div class="logo w-1/12 flex justify-center items-center">
+                    <i class="fa-brands fa-spotify fa-2xl fill-white"></i>
+                </div>
+                <div class="home-btn w-1/12 max-[767px]:hidden flex justify-center items-center">
+                    <div
+                        class="bg-zinc-800 rounded-[50%] flex justify-center items-center p-2 h-12 w-12 hover:bg-zinc-700 transition-all cursor-pointer">
+                        <i class="fa-solid fa-house fa-xl text-white"></i>
+                    </div>
+                </div>
+                <div class="search-bar w-3/4">
+                    <form
+                        class="h-12 hover:bg-zinc-700 transition group flex justify-center items-center gap-2 focus-within:outline-2 focus-within:outline-zinc-100 bg-zinc-800 p-2 rounded-full"
+                        action=""
+                        id="searchBar">
+                        <div
+                            class="search-icon fill-zinc-400 group-hover:fill-white h-10 w-1/12 flex justify-center items-center">
+                            <svg
+                                class="flex justify-center items-center"
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="28"
+                                width="28"
+                                viewBox="0 0 640 640">
+                                <!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                <path
+                                    d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z" />
+                            </svg>
+                        </div>
+
+                        <input
+                            class="font-normal text bg-transparent focus:outline-none w-4/5"
+                            type="text"
+                            placeholder="What do you want to listen to?" />
+
+                        <span class="seprate-line w-[1px] h-7 bg-zinc-500 rounded"></span>
+
+                        <div class="browse-icon flex justify-center items-center w-1/12 h-10">
+                            <svg
+                                class="fill-zinc-400 w-max hover:fill-white transition-all cursor-pointer"
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="28"
+                                width="28"
+                                data-encore-id="icon"
+                                role="img"
+                                aria-hidden="true"
+                                class="e-10860-icon"
+                                viewBox="0 0 24 24"
+                                style="
+                                    --encore-icon-height: var(
+                                        --encore-graphic-size-decorative-base
+                                    );
+                                    --encore-icon-width: var(--encore-graphic-size-decorative-base);
+                                ">
+                                <path
+                                    d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2"></path>
+                                <path
+                                    d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4z"></path>
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+                <!-- Hamburger -->
+                <div class="hamburger">
+                    <i
+                        class="hamburgerI md:!hidden fa-solid fa-bars fa-lg"
+                        style="color: rgb(255, 255, 255)"></i>
+                </div>
+                <!-- Close Btn -->
+                <div class="closeBtn hidden">
+                    <i class="closeI fa-solid fa-xmark fa-lg" style="color: rgb(255, 255, 255)"></i>
+                </div>
+            </div>
+            <div
+                class="header-right max-[767px]:!hidden text-zinc-400 font-medium w-1/2 flex justify-end items-center gap-5">
+                <nav class="flex justify-center items-center gap-6">
+                    <ul class="flex list-none gap-4 text-lg antialiased max-lg:hidden">
+                        <li
+                            class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:scale-105 hover:text-white">
+                            Premium
+                        </li>
+                        <li
+                            class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:scale-105 hover:text-white">
+                            Support
+                        </li>
+                        <li
+                            class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:scale-105 hover:text-white">
+                            Download
+                        </li>
+                    </ul>
+
+                    <span class="seprate-line w-[1px] h-7 bg-zinc-300 max-lg:hidden"></span>
+
+                    <ul class="flex justify-center items-center list-none gap-6 text-sm">
+                        <!-- Install App -->
+                        <li
+                            class="flex justify-center items-center gap-2 cursor-pointer transition-colors duration-200 hover:text-white">
+                            <i class="fa-regular fa-circle-down"></i>
+                            <span>Install app</span>
+                        </li>
+
+                        <!-- Sign Up -->
+                        <li class="cursor-pointer transition-colors duration-200 hover:text-white">
+                            Sign up
+                        </li>
+
+                        <!-- Log In Button (Now properly wrapped in <li>) -->
+                        <li class="antialiased">
+                            <a
+                                href="#"
+                                class="inline-block text-black px-7 py-3 rounded-full font-bold bg-zinc-50 hover:bg-zinc-200 hover:scale-105 transition-all duration-200 antialiased backface-hidden will-change-transform">
+                                Log in
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Header End -->
+
+        <!-- Main -->
+        <main class="w-full grow h-screen flex gap-2 px-2 min-h-0 overflow-hidden">
+            <!-- Left Sidebar -->
+            <div
+                class="left-contentBar max-[767px]:-left-[120%] max-[767px]:absolute max-[767px]:h-screen left-0 transition-all duration-300 w-2/5">
+                <div
+                    class="left-sidebar relative h-full w-full flex flex-col justify-between gap-2 bg-zinc-900 text-white p-4 rounded-xl">
+                    <!-- Left Sidebar Header -->
+                    <div
+                        class="header-right md:hidden text-zinc-400 font-medium w-full flex justify-end items-center gap-5">
+                        <nav class="flex justify-between w-full items-center gap-6">
+                            <ul
+                                class="flex w-full justify-center items-center list-none gap-6 text-sm">
+                                <!-- Sign Up -->
+                                <li
+                                    class="cursor-pointer w-1/2 flex justify-center item-center transition-colors duration-200 hover:text-white">
+                                    Sign up
+                                </li>
+
+                                <!-- Log In Button (Now properly wrapped in <li>) -->
+                                <li class="antialiased w-full">
+                                    <a
+                                        href="#"
+                                        class="inline-block text-black w-full text-center px-7 py-3 rounded-full font-bold bg-zinc-50 hover:bg-zinc-200 hover:scale-105 transition-all duration-200 antialiased backface-hidden will-change-transform">
+                                        Log in
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Left Sidebar Header End -->
+
+                    <!-- Left Container Heading -->
+                    <div class="left-heading flex justify-between">
+                        <h2 class="flex justify-center items-center gap-4">
+                            <svg
+                                class="fill-white"
+                                data-encore-id="icon"
+                                role="img"
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                stroke="#b3b3b3"
+                                strokeWidth="0"
+                                className="hoverable-icon">
+                                <path
+                                    d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z"></path>
+                            </svg>
+                            Your Library
+                        </h2>
+                        <button
+                            class="bg-zinc-800 py-1 px-4 rounded-full text-white font-bold hover:bg-zinc-700 cursor-pointer group transition-all">
+                            <i
+                                class="fa-solid fa-plus text-zinc-500 group-hover:text-zinc-400 transition-all ease-in-out duration-200"></i>
+                            Create
+                        </button>
+                    </div>
+                    <!-- Left Container Heading End -->
+
+                    <!-- Left Content-->
+                    <div
+                        class="left-content flex-1 min-h-0 flex flex-col gap-2 overflow-y-scroll custom-scrollbar">
+                        <div class="song-list">
+                            <ul
+                                class="song-ul flex flex-col gap-2 list-none no-underline text-wrap overflow-y-hidden"></ul>
+                        </div>
+                        <div class="left-cards flex flex-col gap-2">
+                            <div
+                                class="create-library bg-zinc-800 p-4 rounded-xl flex flex-col gap-2">
+                                <h3 class="font-bold">Create your first library</h3>
+                                <p>It's easy, we'll help you.</p>
+                                <button
+                                    class="w-max text-sm bg-zinc-100 py-2 px-4 rounded-full text-black font-bold mt-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-200 antialiased backface-hidden will-change-transform">
+                                    Create Playlist
+                                </button>
+                            </div>
+                            <div
+                                class="find-podcast bg-zinc-800 p-4 rounded-xl flex flex-col gap-2">
+                                <h3 class="font-bold">Let's find some podcasts to follow</h3>
+                                <p>We'll keep you updated on new episodes</p>
+                                <button
+                                    class="w-max text-sm bg-zinc-100 py-2 px-4 rounded-full text-black font-bold mt-2 hover:bg-zinc-200 hover:scale-105 transition-all duration-200 antialiased backface-hidden will-change-transform">
+                                    Browse podcasts
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Left Content End -->
+
+                    <!-- Left Footer -->
+                    <footer class="justify-self-end">
+                        <ul
+                            class="flex justify-start items-center flex-wrap text-xs text-zinc-400 antialiased">
+                            <li
+                                class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:text-white mx-3 my-2">
+                                <a href="#">Legal</a>
+                            </li>
+                            <li
+                                class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:text-white mx-3 my-2">
+                                <a href="#">Safety & Privacy Center</a>
+                            </li>
+                            <li
+                                class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:text-white mx-3 my-2">
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li
+                                class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:text-white mx-3 my-2">
+                                <a href="#">Cookies</a>
+                            </li>
+                            <li
+                                class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:text-white mx-3 my-2">
+                                <a href="#">About Ads</a>
+                            </li>
+                            <li
+                                class="cursor-pointer transform-gpu translate-z-0 will-change-transform transition-all duration-300 ease-out hover:text-white mx-3 my-2">
+                                <a href="#">Accessibility</a>
+                            </li>
+                        </ul>
+                    </footer>
+                    <!-- Left Footer End -->
+                </div>
+                <!-- Left Sidebar End -->
+            </div>
+            <!-- Left ContentBar End -->
+
+            <!-- Right Content -->
+            <div
+                class="right relative max-[767px]:w-full overflow-hidden bg-gradient-to-b bg-linear-[159deg] from-10% from-neutral-800 to-55% to-zinc-950 text-white px-7 py-5 rounded-xl flex flex-col h-full min-h-0 w-4/5">
+                <!-- Right Section Heading -->
+                <div class="right-heading h-[8%] min-h-0 mb-7 flex justify-between items-end">
+                    <h2 class="text-2xl font-bold">Trending songs</h2>
+                    <a
+                        class="text-zinc-400 font-bold hover:underline decoration-white cursor-pointer">
+                        Show all
+                    </a>
+                </div>
+
+                <!-- Right Card Cotainer -->
+                <div
+                    class="card-container overflow-y-auto custom-scrollbar w-full h-full pb-36 justify-items-center grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-1">
+                    <div
+                        class="song-cards p-3 group max-h-96 rounded-md h-fit bg-transparent hover:bg-zinc-800 cursor-pointer w-full max-w-44">
+                        <div
+                            class="song-card-img relative rounded-xl overflow-hidden shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                            <img
+                                class="max-h-3/2 min-h-[100px] min-w-full w-full relative rounded-xl"
+                                height="100px"
+                                src="songs/thumbnail/Jaavedaan Hai.jpg"
+                                alt="Jaavedan_Hai" />
+                            <div
+                                class="w-8 h-8 absolute bottom-0 right-1 translate-y-3 opacity-0 rounded-full p-3 group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-200 ease-in-out flex justify-center items-center">
+                                <i
+                                    class="play-Btn fa-solid fa-circle-play fa-2xl !h-full hover:text-green-600 transition-all duration-200 ease-in-out text-[rgb(24,255,55)]"></i>
+                                <i
+                                    class="pause-Btn fa-solid fa-circle-pause fa-2xl !h-full hover:text-green-600 transition-all duration-200 ease-in-out text-[rgb(24,255,55)] !hidden"></i>
+                            </div>
+                        </div>
+                        <div class="song-content">
+                            <h1 class="text-xl my-2 text-wrap">Jaavedaan Hai</h1>
+                            <p class="text-sm text-zinc-400">KK, Suzanne D'Mello</p>
+                        </div>
+                    </div>
+                    <div
+                        class="song-cards p-3 group max-h-96 rounded-md h-fit bg-transparent hover:bg-zinc-800 cursor-pointer w-full max-w-44">
+                        <div
+                            class="song-card-img relative rounded-xl overflow-hidden shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                            <img
+                                class="max-h-3/2 min-h-[100px] min-w-full w-full relative rounded-xl"
+                                height="100px"
+                                src="songs/thumbnail/Tum Ho Mera Pyaar.jpg"
+                                alt="Jaavedan_Hai" />
+                            <div
+                                class="w-8 h-8 absolute bottom-0 right-1 translate-y-3 opacity-0 rounded-full p-3 group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-200 ease-in-out flex justify-center items-center">
+                                <i
+                                    class="play-Btn fa-solid fa-circle-play fa-2xl !h-full hover:text-green-600 transition-all duration-200 ease-in-out text-[rgb(24,255,55)]"></i>
+                                <i
+                                    class="pause-Btn fa-solid fa-circle-pause fa-2xl !h-full hover:text-green-600 transition-all duration-200 ease-in-out text-[rgb(24,255,55)] !hidden"></i>
+                            </div>
+                        </div>
+                        <div class="song-content">
+                            <h1 class="text-xl my-2 text-wrap">Tum Ho Mera Pyaar</h1>
+                            <p class="text-sm text-zinc-400">KK, Suzanne D'Mello</p>
+                        </div>
+                    </div>
+                    <div
+                        class="song-cards p-3 group max-h-96 rounded-md h-fit bg-transparent hover:bg-zinc-800 cursor-pointer w-full max-w-44">
+                        <div
+                            class="song-card-img relative rounded-xl overflow-hidden shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                            <img
+                                class="max-h-3/2 min-h-[100px] min-w-full w-full relative rounded-xl"
+                                height="100px"
+                                src="songs/thumbnail/I Think They Call This Love.jpg"
+                                alt="Jaavedan_Hai" />
+                            <div
+                                class="w-8 h-8 absolute bottom-0 right-1 translate-y-3 opacity-0 rounded-full p-3 group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-200 ease-in-out flex justify-center items-center">
+                                <i
+                                    class="play-Btn fa-solid fa-circle-play fa-2xl !h-full hover:text-green-600 transition-all duration-200 ease-in-out text-[rgb(24,255,55)]"></i>
+                                <i
+                                    class="pause-Btn fa-solid fa-circle-pause fa-2xl !h-full hover:text-green-600 transition-all duration-200 ease-in-out text-[rgb(24,255,55)] !hidden"></i>
+                            </div>
+                        </div>
+                        <div class="song-content">
+                            <h1 class="text-xl my-2 text-wrap">I Think They Call This Love</h1>
+                            <p class="text-sm text-zinc-400">Matthew Ifield</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Card Container End -->
+
+                <!-- Playber -->
+                <div
+                    class="playerbar absolute bottom-0 left-1/2 -translate-x-1/2 z-10 bg-slate-600/30 backdrop-blur-sm shadow-[0_-10px_25px_10px_rgba(0,0,0,0.7)] w-[97%] rounded-lg h-[20%] max-[767px]:h-[15%] my-2 flex flex-col justify-center items-center p-2 border-white/20 border-[1px]">
+                    <div class="playbar-upper w-full h-4/5 flex justify-between items-center">
+                        <div class="song-info flex h-full w-1/3 justify-between items-center gap-4">
+                            <div class="songname"></div>
+                        </div>
+                        <div class="player-controller w-1/3 flex justify-center items-center gap-4">
+                            <div class="previosSong">
+                                <i
+                                    class="prev fa-solid fa-backward-step fa-xl cursor-pointer text-white/80 hover:text-green-600 transition-all duration-100 ease-in-out"></i>
+                            </div>
+                            <div class="play-stop">
+                                <i
+                                    class="playBtn fa-regular fa-circle-play fa-2xl cursor-pointer text-white/80 hover:text-green-600 transition-all duration-100 ease-in-out"></i>
+                                <i
+                                    class="pauseBtn fa-regular fa-circle-pause fa-2xl cursor-pointer text-white/80 hover:text-green-600 transition-all duration-100 ease-in-out !hidden"></i>
+                            </div>
+                            <div class="nextSong">
+                                <i
+                                    class="next fa-solid fa-forward-step fa-xl cursor-pointer text-white/80 hover:text-green-600 transition-all duration-100 ease-in-out"></i>
+                            </div>
+                        </div>
+                        <div class="song-time w-1/3 flex justify-end">
+                            <span class="current-time"></span><span class="duration"></span>
+                        </div>
+                    </div>
+                    <div
+                        class="seekbar relative h-[10%] w-full bg-white/60 shadow-[0_0_10px_rgba(0,0,0,0.5)] rounded-xl cursor-pointer">
+                        <div
+                            class="circle absolute top-1/2 left-0 -translate-y-1/2 h-7 w-7 bg-black shadow-[0_0_10px_rgba(255,255,255,1)] border-2 border-white rounded-full transition-all"></div>
+                    </div>
+                </div>
+                <!-- Playbar End -->
+            </div>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>

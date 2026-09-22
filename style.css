@@ -1,0 +1,23 @@
+@layer utility {
+    /* Chrome, Safari, aur Edge ke liye */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 12px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #3f3f46; /* zinc-700 */
+        border-radius: 20px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: #71717a; /* zinc-500 */
+    }
+
+    /* Firefox ke liye (Firefox webkit support nahi karta) */
+    .custom-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #3f3f46 transparent;
+        transition: all 200ms ease-in-out;
+    }
+}
